@@ -26,3 +26,30 @@ async function loadItems() {
     showMessage('Error loading items: ' + err.message, 'error');
   }
 }
+
+
+addForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const newItem = {
+    name: document.getElementById('name').value,
+    category: document.getElementById('category').value,
+    quantity: parseInt(document.getElementById('quantity').value),
+    price: parseFloat(document.getElementById('price').value),
+    description: document.getElementById('description').value
+  };
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newItem)
+    });
+
+    if (!response.ok) throw new Error('Failed to add item');
+    showMessage('Item added successfully!', 'success');
+    addForm.reset();
+    loadItems();
+  } catch (err) {
+    showMessage(err.message, 'error');
+  }
+});
