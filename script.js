@@ -53,3 +53,48 @@ addForm.addEventListener('submit', async (e) => {
     showMessage(err.message, 'error');
   }
 });
+
+
+//
+async function deleteItem(id) {
+  try {
+    const response = await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+    if (!response.ok) throw new Error('Failed to delete item');
+    showMessage('Item deleted successfully!', 'success');
+    loadItems();
+  } catch (err) {
+    showMessage(err.message, 'error');
+  }
+}
+
+async function editItem(id) {
+  const newName = prompt('Enter new name:');
+  const newCategory = prompt('Enter new category:');
+  const newQuantity = prompt('Enter new quantity:');
+  const newPrice = prompt('Enter new price:');
+  const newDescription = prompt('Enter new description:');
+
+  if (!(newName && newCategory && newQuantity && newPrice && newDescription)) return;
+
+  const updateData = {
+    name: newName,
+    category: newCategory,
+    quantity: parseInt(newQuantity),
+    price: parseFloat(newPrice),
+    description: newDescription
+  };
+
+  try {
+    const response = await fetch(`${apiUrl}/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updateData)
+    });
+
+    if (!response.ok) throw new Error('Failed to update item');
+    showMessage('Item updated successfully!', 'success');
+    loadItems();
+  } catch (err) {
+    showMessage(err.message, 'error');
+  }
+}
