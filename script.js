@@ -98,3 +98,11 @@ async function editItem(id) {
     showMessage(err.message, 'error');
   }
 }
+
+function showMessage(text, type) {
+  messageDiv.textContent = text;
+  messageDiv.className = `message ${type}`;
+  setTimeout(() => (messageDiv.textContent = ''), 3000);
+}
+
+loadItems();
