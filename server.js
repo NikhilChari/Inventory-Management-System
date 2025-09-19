@@ -53,3 +53,10 @@ app.put("/api/items/:id", (req, res) => {
   fs.writeFileSync(dbPath, JSON.stringify(items, null, 2));
   res.json(items[index]);
 });
+
+// Serve frontend
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+app.listen(PORT, () => console.log(`✅ Server running at http://localhost:${PORT}`));
