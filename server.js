@@ -26,3 +26,12 @@ app.get("/api/items", (req, res) => {
   const data = JSON.parse(fs.readFileSync(dbPath));
   res.json(data);
 });
+
+// Add new item
+app.post("/api/items", (req, res) => {
+  const items = JSON.parse(fs.readFileSync(dbPath));
+  const newItem = { id: Date.now().toString(), ...req.body };
+  items.push(newItem);
+  fs.writeFileSync(dbPath, JSON.stringify(items, null, 2));
+  res.status(201).json(newItem);
+});
