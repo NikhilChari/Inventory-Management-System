@@ -35,3 +35,11 @@ app.post("/api/items", (req, res) => {
   fs.writeFileSync(dbPath, JSON.stringify(items, null, 2));
   res.status(201).json(newItem);
 });
+
+// Delete item
+app.delete("/api/items/:id", (req, res) => {
+  let items = JSON.parse(fs.readFileSync(dbPath));
+  items = items.filter((item) => item.id !== req.params.id);
+  fs.writeFileSync(dbPath, JSON.stringify(items, null, 2));
+  res.json({ message: "Item deleted" });
+});
