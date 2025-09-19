@@ -43,3 +43,13 @@ app.delete("/api/items/:id", (req, res) => {
   fs.writeFileSync(dbPath, JSON.stringify(items, null, 2));
   res.json({ message: "Item deleted" });
 });
+
+// Update item
+app.put("/api/items/:id", (req, res) => {
+  let items = JSON.parse(fs.readFileSync(dbPath));
+  const index = items.findIndex((item) => item.id === req.params.id);
+  if (index === -1) return res.status(404).json({ message: "Item not found" });
+  items[index] = { ...items[index], ...req.body };
+  fs.writeFileSync(dbPath, JSON.stringify(items, null, 2));
+  res.json(items[index]);
+});
