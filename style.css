@@ -4,3 +4,27 @@ body {
   margin: 0;
   padding: 0;
 }
+header {
+  background-color: #0078d4;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  margin-bottom: 15px;
+}
+
+.form-section {
+  margin-bottom: 30px;
+}
