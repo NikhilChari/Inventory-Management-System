@@ -1,0 +1,99 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{geometry}
+\geometry{margin=1in}
+\setstretch{1.3}
+
+\title{\textbf{Design and Architecture of an Inventory Management System}}
+\author{Bhiva S. Korkhankar}
+\date{28/10/2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper presents the detailed design and system architecture of an open-source \textbf{Inventory Management System (IMS)}. It focuses on the system’s modular structure, layered architecture, and the underlying design principles that ensure scalability, usability, and maintainability. The architecture provides a clear separation of concerns across components, enabling smooth integration, robust data handling, and efficient performance in real-world scenarios.
+\end{abstract}
+
+\section{Introduction}
+Inventory Management Systems (IMS) play a vital role in modern businesses by simplifying stock management, order tracking, supplier coordination, and resource planning. Efficient IMS solutions reduce human errors, improve transparency, and enhance decision-making through accurate, real-time data.
+
+This paper outlines the design and architectural aspects of an open-source IMS developed as a web-based platform. The project is available on GitHub at:
+
+\begin{center}
+\href{https://github.com/NikhilChari/Inventory-Management-System.git}{https://github.com/NikhilChari/Inventory-Management-System.git}
+\end{center}
+
+The design described here focuses on modularization, scalability, and extensibility. The system is implemented using modern technologies such as \textbf{JavaScript}, \textbf{Node.js}, ensuring a clean separation between presentation, business logic, and data management layers.
+
+\section{System Architecture}
+The overall system architecture follows a \textbf{three-layered model} comprising:
+\begin{enumerate}
+    \item \textbf{Presentation Layer (Frontend)}
+    \item \textbf{Business Logic Layer (Backend)}
+    \item \textbf{Data Layer (Database)}
+\end{enumerate}
+
+\subsection*{1. Presentation Layer}
+The presentation layer acts as the interface between the user and the system. It is developed using modern front-end frameworks such as \textbf{React.js} or \textbf{HTML/CSS/JavaScript}, offering:
+\begin{itemize}
+    \item Intuitive dashboards for real-time stock visibility.
+    \item Forms for adding, updating, and deleting inventory items.
+    \item Interactive charts for analytics and insights.
+\end{itemize}
+
+\subsection*{2. Business Logic Layer}
+The backend or business logic layer is implemented using \textbf{Node.js with Express.js}. It handles:
+\begin{itemize}
+    \item API routing and request handling.
+    \item Authentication and authorization using \textbf{JWT (JSON Web Tokens)}.
+    \item Validation and transformation of input data.
+    \item Integration with the database for CRUD operations.
+\end{itemize}
+
+This layer ensures the system’s security, scalability, and consistent business operations.
+
+\subsection*{3. Data Layer}
+The data layer manages persistent storage using \textbf{MongoDB}, a NoSQL database ideal for handling dynamic and scalable data structures. It stores:
+\begin{itemize}
+    \item Product and supplier details.
+    \item Purchase and sales transactions.
+    \item User credentials and access permissions.
+\end{itemize}
+
+\section{Design Principles}
+The design of the IMS adheres to established software engineering principles to ensure reliability and future scalability.
+
+\begin{itemize}
+    \item \textbf{Modularity:} Each component (frontend, backend, database) is independently developed and can be modified without affecting others.
+    \item \textbf{Scalability:} The architecture supports scaling both vertically (adding resources) and horizontally (adding more servers or containers).
+    \item \textbf{Security:} Data is protected through JWT-based authentication, password encryption, and input sanitization to prevent vulnerabilities like SQL/NoSQL injection.
+    \item \textbf{Usability:} The user interface is designed with a focus on simplicity, consistency, and accessibility for all users.
+    \item \textbf{Maintainability:} Proper documentation, code comments, and use of version control ensure ease of maintenance and updates.
+\end{itemize}
+
+\subsection*{Challenges and Solutions}
+During design, several challenges were encountered:
+\begin{itemize}
+    \item \textbf{Real-time Synchronization:} Achieved through RESTful APIs and dynamic UI rendering.
+    \item \textbf{Data Consistency:} Ensured via atomic transactions and validation at both frontend and backend levels.
+    \item \textbf{System Integration:} Modular API architecture simplified future integration with analytics or billing systems.
+\end{itemize}
+
+\section{Conclusion}
+The proposed design and architecture provide a robust foundation for an efficient, secure, and extensible Inventory Management System. By adopting a layered structure and adhering to strong design principles, the IMS is capable of managing complex business workflows with accuracy and reliability.
+
+Future enhancements include:
+\begin{itemize}
+    \item Performance benchmarking and optimization under higher loads.
+    \item Integration of AI-based predictive analytics for demand forecasting.
+    \item Mobile application support for cross-platform accessibility.
+\end{itemize}
+
+
+\end{document}
